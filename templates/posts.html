@@ -1,0 +1,19 @@
+<h1>Blog Posts</h1>
+<br/>
+
+
+{%for post in posts %}
+
+  {{post.title}}<br/>
+  {{post.author}}<br/>
+
+  {{post.date_posted}}<br/>
+  {{post.content}}<br/>
+
+  <a href="{{ url_for('post', id=post.id)}}">View Post</a>
+  <br/>
+  <br/>
+
+{%endfor%}
+<a href="{{url_for('add_post')}}">Add a post</a>
+<a href="{{url_for('logout')}}">Logout</a>
