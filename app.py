@@ -163,7 +163,7 @@ def add_post():
     #add to database
     db.session.add(post)
     db.session.commit()
-    
+
   return render_template("add_post.html", form=form)
 
 #Create a password form
