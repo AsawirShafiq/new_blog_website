@@ -1,0 +1,29 @@
+{% if email %}
+
+  <h1>Email: {{email}}</h1>
+  <h1>Password: {{password}}</h1>
+  <h2>Information: </h2>
+  Name: {{pw_to_check.name}}<br/>
+  Email: {{pw_to_check.email}}<br/>
+  PW: {{pw_to_check.password_hash}}<br/>
+  <br/>
+  Passed: {{ passed }}
+
+
+{% else %}
+  <h1>Whats your email?</h1>
+  <br/>
+  <form method="POST">
+    {{ form.hidden_tag()}}
+
+    {{form.email.label()}}
+    {{form.email()}}
+
+    {{form.password_hash.label()}}
+    {{form.password_hash()}}
+
+    {{ form.submit()}}
+
+  </form>
+
+{%endif%}
