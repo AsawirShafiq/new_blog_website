@@ -8,10 +8,10 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms.widgets import TextArea
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-
+import os
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://myuser:mypassword@localhost/flask_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@localhost:3306/new_flask_db'
 app.config['SECRET_KEY'] = "my secret key"
 
 db = SQLAlchemy(app)
@@ -274,4 +274,4 @@ def page_not_found(e):
   return render_template("500.html"), 500
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run(host = '0.0.0.0',port = 5000 ,debug=os.environ.get('DEBUG')=='1')

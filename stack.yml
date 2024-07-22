@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+  web:
+    image: asawirshafiq/blogwebsite_web:latest
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "512M"
+      restart_policy:
+        condition: on-failure
+    ports:
+      - 5000:5000
+    environment:
+      DATABASE_URL: mysql+mysqlconnector://myuser:mypassword@mariadb/flask_db
+      DEBUG: "0"
+    networks:
+      - flask_network
+
+  proxy:
+    image: nginx:latest
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "256M"
+      restart_policy:
+        condition: on-failure
+    ports:
+      - 80:80
+    networks:
+      - flask_network
+
+  mariadb:
+    image: mariadb:latest
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "512M"
+      restart_policy:
+        condition: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: Sic parvis magna
+      MYSQL_DATABASE: flask_db
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - flask_network
+
+networks:
+  flask_network:
+
+volumes:
+  mariadb_data:
