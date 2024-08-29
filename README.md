@@ -30,8 +30,8 @@ This project is a blog website built with Flask, featuring user authentication a
 
 ### 1. **Clone the Repository**
 ```bash
-git clone https://github.com/your-repository/flask-blog-website.git
-cd flask-blog-website
+git clone https://github.com/AsawirShafiq/new_blog_website.git
+cd new_blog_website
 ```
 ### 2. **Install Docker**
 - Follow the official Docker installation guide to install Docker on your system.
