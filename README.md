@@ -25,3 +25,26 @@ This project is a blog website built with Flask, featuring user authentication a
 - **What It Does:** Manages the deployment and scaling of Docker containers using Docker Swarm.
 - **Why It’s Used:** Docker Swarm provides orchestration and clustering for Docker containers, enabling high availability and scalability.
 - **How It Works:** Docker Swarm manages a cluster of Docker nodes, distributing containers across nodes and handling load balancing and failover.
+
+## Installation and Setup
+
+### 1. **Clone the Repository**
+```bash
+git clone https://github.com/your-repository/flask-blog-website.git
+cd flask-blog-website
+```
+### 2. **Install Docker**
+- Follow the official Docker installation guide to install Docker on your system.
+
+### 3. **Build and run the Docker Container**
+```bash
+docker-compose up --build
+```
+### 4. **Initialize Docker swarm**
+```bash
+docker swarm init
+```
+### 5. **Deploy the Application with Docker Swarm**
+```bash
+docker stack deploy -c docker-compose.yml blog
+```
